@@ -15,7 +15,13 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nombre_usuario',255);
+            $table->string('apellido_usuario',255);
+            $table->foreignId('id_direccion_usuario');
+            $table->foreign('id_direccion_usuario')->references('id')->on('direcciones');
+            $table->date('nacimiento_usuario');
+            $table->string('correo_usuario',255);
+            $table->string('foto_usuario',255)->nullable;
         });
     }
 
