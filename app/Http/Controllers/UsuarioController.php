@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    public function crearUser(){
+        return view('user.crear');
+    }
+    public function crearUserPOST(Request $request){
+        return $request;
+    }
+    
     /**
      * Display a listing of the resource.
      *
