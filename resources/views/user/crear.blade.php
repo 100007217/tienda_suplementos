@@ -13,6 +13,7 @@
         <br><input type="text" name="nombre" id="" placeholder="Nombre...">
         <br><input type="text" name="apellido" id="" placeholder="Apellido... ">
         <br><input type="email" name="correo" id="" placeholder="usuario@dominio.com">
+        <br><input type="text" name="telefono" id="" placeholder="numero telefono">
         <br><input type="text" name="direccion1" id="" placeholder="Dirección... ">
         <br><input type="text" name="direccion2" id="" placeholder="Dirección secundaria... ">
         <br><input type="date" name="nacimiento" id="" placeholder="Fecha de nacimiento">

@@ -23,3 +23,6 @@ Route::get('/', function () {
 Route::get('/crearUser', [UsuarioController::class, 'crearUser']);
 
 Route::post('/insertUser', [UsuarioController::class, 'crearUserPOST']);
+
+Route::get('/mostrarUser', [UsuarioController::class, 'mostrarUser']);
+

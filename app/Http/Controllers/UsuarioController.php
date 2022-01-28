@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -11,7 +12,22 @@ class UsuarioController extends Controller
         return view('user.crear');
     }
     public function crearUserPOST(Request $request){
+
+        $datos = $request->except('_token');
+        //Con lo de abajo guardamos en un booleano si se ha guardado un archivo en el request que pidamos
+        $foto = $request->hasFile('foto');
+        if ($foto) {
+            $datos['foto'] = $request->file('foto')->store('uploads','public');
+        }else{
+            //Aqui venimos si no hay ninguna foto a la hora de subir la foto de la persona
+            $datos['foto'] = "uploads/perro.jpeg";
+        }
+
         return $request;
+    }
+    public function mostrarUser(){
+        $listausers = DB::table('usuarios')->leftjoin('direcciones','usuarios.id_direccion_usuario','=','direcciones.id')->select('usuarios.*','direcciones.*')->get();
+        return view('user.vista', ['listausers' => $listausers]);
     }
     
     /**
