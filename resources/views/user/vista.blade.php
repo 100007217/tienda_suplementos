@@ -19,6 +19,7 @@
             <th>Nacimiento usuario</th>
             <th>Foto usuario</th>
             <th>Direccion usuario</th>
+            <th>Direccion secundaria usuario</th>
             <th>Telefono usuario</th>
             <th>Actualizar usuario</th>
             <th>Eliminar usuario</th>
@@ -31,8 +32,9 @@
         <td>{{$user->apellido_usuario}}</td>
         <td>{{$user->correo_usuario}}</td>
         <td>{{$user->nacimiento_usuario}}</td>
-        <td>{{$user->foto_usuario}}</td>
+        <td><img src="storage/{{$user->foto_usuario}}" alt="" width="100px" height="100px"></td>
         <td>{{$user->direccion1}}</td>
+        <td>{{$user->direccion2}}</td>
         <td>{{$user->telefono_usuario}}</td>
        
         

@@ -22,11 +22,35 @@ class UsuarioController extends Controller
             //Aqui venimos si no hay ninguna foto a la hora de subir la foto de la persona
             $datos['foto'] = "uploads/perro.jpeg";
         }
+        try {
+            DB::beginTransaction();
+            $id = DB::table('usuarios')->insertGetId([
+                'nombre_usuario' => $datos['nombre'],
+                'apellido_usuario' => $datos['apellido'],
+                'nacimiento_usuario' => $datos['nacimiento'],
+                'correo_usuario' => $datos['correo'],
+                'foto_usuario' => $datos['foto'],
+                'telefono_usuario' => $datos['telefono'],
+            ]);
+            
+            
+            DB::table('direcciones')->insert([
+                'direccion1' => $datos['direccion1'],
+                'direccion2' => $datos['direccion2'],
+                'id_user' => $id
+            ]);
+            
+            DB::commit();
+        } catch (\Exception $error) {
+            DB::rollback();
+            return $error -> getMessage();
+        }
+        return redirect('mostrarUser');
 
-        return $request;
+        //return $request;
     }
     public function mostrarUser(){
-        $listausers = DB::table('usuarios')->leftjoin('direcciones','usuarios.id_direccion_usuario','=','direcciones.id')->select('usuarios.*','direcciones.*')->get();
+        $listausers = DB::table('usuarios')->join('direcciones','usuarios.id','=','direcciones.id_user')->select('usuarios.*','direcciones.*')->get();
         return view('user.vista', ['listausers' => $listausers]);
     }
     
