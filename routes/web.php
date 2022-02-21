@@ -26,3 +26,11 @@ Route::post('/insertUser', [UsuarioController::class, 'crearUserPOST']);
 
 Route::get('/mostrarUser', [UsuarioController::class, 'mostrarUser']);
 
+Route::get('/addSesion/{id}', [ProductoController::class, 'anadirCarrito']);
+
+Route::get('/removeSesion/{id}', [ProductoController::class, 'eliminarCarrito']);
+
+Route::get('/limpiarCarrito', [ProductoController::class, 'limpiarCarrito']);
+
+
+

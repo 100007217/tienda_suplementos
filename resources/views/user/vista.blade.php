@@ -7,6 +7,16 @@
     <title>Listado de users</title>
 </head>
 <body>
+    @if (session()->has('carrito'))
+        <?php
+            $data = session()->all();
+            print_r($data['carrito']);
+        ?>
+    @endif
+    <div>
+        <a href="{{ url('/limpiarCarrito') }}">Vaciar carrito</a>
+    </div>
+    
 
     <br>
     LISTA DE USERS
@@ -21,7 +31,7 @@
             <th>Direccion usuario</th>
             <th>Direccion secundaria usuario</th>
             <th>Telefono usuario</th>
-            <th>Actualizar usuario</th>
+            <th>Añadir al carrito</th>
             <th>Eliminar usuario</th>
         </tr>
         <tr>
@@ -36,6 +46,12 @@
         <td>{{$user->direccion1}}</td>
         <td>{{$user->direccion2}}</td>
         <td>{{$user->telefono_usuario}}</td>
+        <td>
+            <a href="{{url('/addSesion/'.$user->id)}}">Agregar 1 {{$user->nombre_usuario}} al carrito</a>
+        </td>
+        <td>
+            <a href="{{url('/removeSesion/'.$user->id)}}">Eliminar 1 {{$user->nombre_usuario}} del carrito</a>
+        </td>
        
         
     

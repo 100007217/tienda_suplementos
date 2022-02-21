@@ -54,11 +54,6 @@ class UsuarioController extends Controller
         return view('user.vista', ['listausers' => $listausers]);
     }
     
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
