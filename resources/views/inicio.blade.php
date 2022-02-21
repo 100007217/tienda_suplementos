@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GYM KING - Tienda Oficial</title>
-    <link rel="stylesheet" href="../resources/css/style_inicio.css">
-    <link rel="stylesheet" href="../resources/css/all.css">
+    <link rel="stylesheet" href="../css/style_inicio.css">
+    <link rel="stylesheet" href="../css/all.css">
     <link rel="shortcut icon" href="../uploads/img/logoo.png" type="image/x-icon">
-    <script src="../resources/js/all.js"></script>
+    <script src="../js/all.js"></script>
+    <link rel="stylesheet" href="..">
     <!--<script src="../resources/js/code.js"></script>-->
 </head>
 <body>
@@ -34,7 +35,7 @@
                 <h2 class="ttl_novedades">Novedades!</h2>
                 @foreach ($n_producto as $item)
                     <div class="producto">
-                        <img class="img_producto" src="../uploads/img/{{$item->foto_producto}}">
+                        <img class="img_producto" src="storage/{{$item->foto_producto}}">
                         <h3>{{$item->nombre_producto}}</h3>
                     </div>
                 @endforeach
@@ -43,14 +44,23 @@
                 <h2 class="ttl_novedades">Productos</h2>
                 @foreach ($producto as $item)
                     <div class="producto">
-                        <img class="img_producto" src="../uploads/img/{{$item->foto_producto}}">
+                        <img class="img_producto" src="storage/{{$item->foto_producto}}">
                         <h3>{{$item->nombre_producto}}</h3>
-                        <button>Añadir</button>
+                        <a href="{{url('/addSesion/'.$item->id)}}">Agregar {{$item->nombre_producto}} al carrito</a>
+                        <br>
+                        <a href="{{url('/removeSesion/'.$item->id)}}">Eliminar 1 {{$item->nombre_producto}} del carrito</a>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
+    @if (session()->has('carrito'))
+        <?php
+            $data = session()->all();
+            print_r($data['carrito']);
+        ?>
+    @endif
+    <a href="{{ url('/limpiarCarrito') }}">Vaciar carrito</a>
     <footer>
         <h2>Footer</h2>
     </footer>

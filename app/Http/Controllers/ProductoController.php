@@ -6,6 +6,8 @@ use App\Models\producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use Session;
+
 class ProductoController extends Controller
 {
     /**
@@ -13,21 +15,48 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function anadirCarrito($id)
     {
-        //
-    }
+        $product = DB::select('select * from productos where id='.$id);
+        $carrito = session('carrito');
+        if (!isset($carrito[$id]['id_producto'])) {
+            $carrito[$id] = array(
+                "id_producto" => $id,
+                "nombre" => $product[0]->nombre_producto,
+                "precio" => $product[0]->precio_producto,
+                "qty" => 1,
+            );
+        }else{
+            if ($carrito[$id]['id_producto']==$id && $carrito[$id]['qty']!=0) {
+                $carrito[$id]['qty'] += 1;
+            }
+        }
+        session()->put('carrito', $carrito);
+        //dd(Session::get('cart'));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+        return redirect('inicio');
+    }
+    public function eliminarCarrito($id){
+        $carrito = session('carrito');
+        
+        if ($carrito[$id]['id_producto']==$id) {
+            $carrito[$id]['qty'] -= 1;
+        }
+        
+        session()->put('carrito', $carrito);
+        //dd(Session::get('cart'));
+
+        return redirect('inicio');
+    }
+    
+    
+    public function limpiarCarrito()
     {
-        //
-    }
+        session()->forget('carrito');
 
+        return redirect('inicio');
+    }
+    
     /**
      * Store a newly created resource in storage.
      *
