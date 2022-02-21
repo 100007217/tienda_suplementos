@@ -37,7 +37,7 @@ class ProductoController extends Controller
     public function eliminarCarrito($id){
         $carrito = session('carrito');
         
-        if ($carrito[$id]['id_producto']==$id && $carrito[$id]['qty']!=0) {
+        if ($carrito[$id]['id_producto']==$id) {
             $carrito[$id]['qty'] -= 1;
         }
         
