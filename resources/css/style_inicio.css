@@ -1,0 +1,185 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Modern Machine';
+    src: url(https://www.dafont.com/modern-machine.font);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* background-image: url(../../uploads/img/fondo.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #fff;
+    height: 100vh;
+}
+
+.info {
+    background-color: rgb(39, 39, 39);
+    color: #fff;
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    padding: 0.3%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.info:hover {
+    color: rgb(155, 149, 149);
+    cursor: pointer;
+}
+
+.barra_tareas {
+    background-color: rgb(68, 68, 68);
+    color: #fff;
+    height: 65px;
+    width: 100%;
+    padding: 0.5%;
+    font-size: 22px;
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.img_barra {
+    width: 65px;
+    height: 40px;
+    display: block;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.img_button_barra {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+
+.ttl {
+    font-size: 50px;
+    display: block;
+    text-align: center;
+    font-style: italic;
+    font-family: 'Modern Machine';
+    margin-top: -0.5%;
+    cursor: pointer;
+}
+
+.form {
+    display: block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.input_form {
+    width: 775px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: black;
+    border-width: 3px;
+    margin-top: -2px;
+    display: block;
+}
+
+.barra_tareas h3 {
+    font-size: 16px;
+    text-align: center;
+    margin-left: 15px;
+    display: block;
+}
+
+.barra_tareas a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+}
+
+.barra_tareas a:hover {
+    text-decoration: none;
+    color: rgb(194, 194, 194);
+}
+
+.carrito {
+    margin-top: 15px;
+    margin-left: 10px;
+    display: block;
+}
+
+.carrito:hover {
+    text-decoration: none;
+    color: rgb(194, 194, 194);
+    transform: scale(135%);
+    transition-duration: 0.5s;
+}
+
+.contenido_inicio {
+    width: 90%;
+    margin-top: 2%;
+    margin-left: 5%;
+    /* display: flex; */
+}
+
+.novedades {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.842);
+    border-radius: 5px;
+}
+
+.ttl_novedades {
+    font-size: 24px;
+    margin-left: 35px;
+    display: block;
+}
+
+.producto {
+    display: block;
+    width: 20%;
+    float: left;
+    margin: 2.5%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1%;
+    z-index: 0;
+    height: 330px;
+}
+
+.producto:hover {
+    transform: scale(110%);
+    transition: all ease 0.5s;
+    box-shadow: 0px 0px 20px rgba(27, 27, 27, 0.699);
+    border-radius: 5px;
+}
+
+.img_producto {
+    width: 185px;
+    height: 200px;
+}
+
+.productos {
+    display: flex;
+    width: 100%;
+    margin-top: 2%;
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    height: auto;
+    color: white;
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.466);
+    margin-top: 2%;
+}
