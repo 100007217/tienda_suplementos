@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../resources/css/all.css">
     <link rel="shortcut icon" href="../uploads/img/logoo.png" type="image/x-icon">
     <script src="../resources/js/all.js"></script>
-    <!--<script src="../resources/js/code.js"></script>-->
+    <script src="../resources/js/code.js"></script>
 </head>
 <body>
     <div class="info">
@@ -46,6 +46,11 @@
                         <img class="img_producto" src="../uploads/img/{{$item->foto_producto}}">
                         <h3>{{$item->nombre_producto}}</h3>
                         <button>Añadir</button>
+                        <form>
+                            <input type="number" value="0" id="cantidad{{$item->id}}" name="item" min="0" disabled>
+                            <button onclick="incrementar({{$item->id}}); return false;">+</button>
+                            <button onclick="decrementar({{$item->id}}); return false;">-</button>
+                        </form>
                     </div>
                 @endforeach
             </div>
