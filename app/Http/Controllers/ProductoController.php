@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Session;
 
+use Session;
 
 class ProductoController extends Controller
 {
@@ -109,5 +109,15 @@ class ProductoController extends Controller
     public function destroy(producto $producto)
     {
         //
+    }
+
+    public function inicio(){
+        $producto = DB::table('productos')->select('*')->get();
+        $n_producto = DB::table('productos')->where('novedad_producto', '=', '1')->select('*')->get();
+        return view('inicio', compact('producto', 'n_producto'));
+    }
+
+    public function crear(){
+        return view('/admin/crear');
     }
 }
