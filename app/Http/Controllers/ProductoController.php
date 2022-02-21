@@ -22,6 +22,8 @@ class ProductoController extends Controller
         if (!isset($carrito[$id]['id_producto'])) {
             $carrito[$id] = array(
                 "id_producto" => $id,
+                "nombre" => $product[0]->nombre_producto,
+                "precio" => $product[0]->precio_producto,
                 "qty" => 1,
             );
         }else{
@@ -32,7 +34,7 @@ class ProductoController extends Controller
         session()->put('carrito', $carrito);
         //dd(Session::get('cart'));
 
-        return redirect('mostrarUser');
+        return redirect('inicio');
     }
     public function eliminarCarrito($id){
         $carrito = session('carrito');
@@ -44,7 +46,7 @@ class ProductoController extends Controller
         session()->put('carrito', $carrito);
         //dd(Session::get('cart'));
 
-        return redirect('mostrarUser');
+        return redirect('inicio');
     }
     
     
@@ -52,7 +54,7 @@ class ProductoController extends Controller
     {
         session()->forget('carrito');
 
-        return redirect('mostrarUser');
+        return redirect('inicio');
     }
     
     /**
